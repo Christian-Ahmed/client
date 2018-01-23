@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Cool Full Stack App</title>
+      <meta charset="UTF-8">
+      <title>Lab 4</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="vendor/styles/normalize.css">
+      <link rel="stylesheet" href="vendor/styles/icons.css">
+      <link rel="stylesheet" href="styles/base.css">
+      <link rel="stylesheet" href="styles/layout.css">
+      <link rel="stylesheet" href="styles/modules.css">
+      <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
+    <title>Book-list-client</title>
   </head>
   <body>
+      <header class="site-header clearfix">
+          <section class="heading-group-h1">
+            <h1>
+              books app
+            </h1>
+            <ul class+"cf-icon">
+              <li><a href="styles/images/f41d4dd5111de20d1c1265e538cee4a9_400x400.png"></a></li>
+            </ul>
+            <h2>My Books</h2>
+          </section>
+          <nav class="main-nav">
+            <div class="icon-menu"></div>
+            <ul>
+              <li><a href="DATABASE_URL" target="_blank" class="my_books"> My Books</a></li>
+            </ul>
+          </nav>
+        </header>
     <main>
       <form id="user-form">
-        <input type="text" id="title" placeholder="Title" required>
-        <input type="text" id="author" placeholder="Author" required>
-        <input type="text" id="authorUrl" placeholder="Author-Url" required>
-        <button type="submit">Add Book</button>
+        <input type="text" id="book_id" placeholder="book id" required>
+        <input type="text" id="author" placeholder="author" required>
+        <input type="text" id="title" placeholder="title" required>
+        <input type="text" id="isbn" placeholder="isbn" required>
+        <input type="img" id="image" placeholder scr ="img_url" required>
+        <input type="text" id="description" placeholder="description" required>
+        <button type="submit">Search</button>
       </form>
 
       <section id="results"></section>
     </main>
+    <footer>
+        &copy; 2018 empty sky | Book List | Happy Reading!
+      </footer>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="app.js"></script>
