@@ -8,36 +8,36 @@ $('#user-form').on('submit', function(e) {
   e.preventDefault();
 
   let data = {
-    name: e.target.name.value,
-    age: e.target.age.value,
-    ninja: e.target.ninja.value
+    title: e.target.title.value,
+    author: e.target.author.value,
+    authorUrl: e.target.authorUrl.value
   }
 
   $.post(`${__API_URL__}/db/person`, data)
-  .then(function() {
-    pageLoad();
-  })
-  .catch(function(err) {
-    console.error(err);
-    pageLoad();
-  });
+    .then(function() {
+      pageLoad();
+    })
+    .catch(function(err) {
+      console.error(err);
+      pageLoad();
+    });
 });
 
 function pageLoad() {
   $.get(`${__API_URL__}/db/person`)
-  .then(function(data) {
-    console.log('our data:', data);
-    $('#results').empty();
+    .then(function(data) {
+      console.log('our data:', data);
+      $('#results').empty();
 
-    data.rows.forEach(function(item) {
-      let content = `
-        <h2>name: ${item.name}</h2>
-        <p>age: ${item.age}</p>
-        <p>ninja status: ${item.ninja}</p>
+      data.rows.forEach(function(item) {
+        let content = `
+        <h2>Book Title: ${item.title}</h2>
+        <p>Author: ${item.author}</p>
+        <p>Author Url: ${item.authorUrl}</p>
       `;
-      $('#results').append(content);
+        $('#results').append(content);
+      });
+    }, function(err) {
+      console.error(err);
     });
-  }, function(err) {
-    console.error(err);
-  });
 }
