@@ -8,7 +8,11 @@ var app = app || {};
     $('.container').hide();
     $('.book-view').show();
     app.Book.all.forEach(a => $('#book-list').append(a.toHtml()));
-
-    module.bookView = bookView;
   };
+
+  $(document).ready(function() {
+    app.Book.fetchAll(bookView.initIndexPage);
+  });
+
+  module.bookView = bookView;
 }), (window);

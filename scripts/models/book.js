@@ -2,6 +2,7 @@
 var app = app || {};
 
 (function(module){
+
   function Book(rawBook){
     Object.keys(rawBook).forEach(key => {
       this[key] = rawBook[key];
@@ -23,7 +24,7 @@ var app = app || {};
   };
 
   Book.fetchAll = callback => {
-    $.get('/db/person')
+    $.get('../../data/book.json')
       .then(
         function(results) {
 
