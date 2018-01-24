@@ -11,7 +11,7 @@ var app = app || {};
 
   Book.all = [];
 
-  Book.prototype.toHtml = function() {
+  Book.prototype.toHtml = () => {
     var template = Handlebars.compile($('#book-list-template').text());
 
     return template(this);
