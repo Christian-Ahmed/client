@@ -1,4 +1,6 @@
 'use strict'
+
+var __API_URL__ = 'https://christian-ahmed-books.herokuapp.com/'; 
 var app = app || {};
 
 (function(module){
@@ -19,7 +21,6 @@ var app = app || {};
 
   Book.loadAll = rows => {
     rows.sort((a,b) => (new Book(b.title)) - (new Book(a.title)))
-
     Book.all = rows.map(bookObject => new Book(bookObject));
   };
 
@@ -27,12 +28,11 @@ var app = app || {};
     $.get('../../data/book.json')
       .then(
         function(results) {
-
           Book.loadAll(results);
           callback();
         }
       )
-
   };
+
   module.Book = Book;
-}), (window);
+})(app);

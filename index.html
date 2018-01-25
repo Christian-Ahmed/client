@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset="UTF-8">
-      <title>Lab 4</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="vendor/styles/normalize.css">
-      <link rel="stylesheet" href="vendor/styles/icons.css">
-      <link rel="stylesheet" href="styles/base.css">
-      <link rel="stylesheet" href="styles/layout.css">
-      <link rel="stylesheet" href="styles/modules.css">
-      <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
-    <title>Book-list-client</title>
+    <title>BooksApp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="vendor/styles/normalize.css">
+    <link rel="stylesheet" href="vendor/styles/icons.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/modules.css">
+    <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
+    <script id="book-list-template" type="text/x-handlebars-template">
+      <div class="booklist-item" data-book_id="{{book_id}}">
+        <img src="{{img_url}}"/>
+        <div>
+            <p>{{author}}</p>
+            <p>{{title}}</p>
+            <div>View Details</div>
+        </div>
+      </div>
+    </script>
   </head>
   <body>
       <header class="site-header clearfix">
           <section class="heading-group-h1">
-            <h1>
-              books app
-            </h1>
-            <ul class+"cf-icon">
-              <li><a href="styles/images/f41d4dd5111de20d1c1265e538cee4a9_400x400.png"></a></li>
-            </ul>
-            <h2>My Books</h2>
+            <h1>Books App</h1>
           </section>
           <nav class="main-nav">
             <div class="icon-menu"></div>
             <ul>
-              <li><a href="DATABASE_URL" target="_blank" class="my_books"> My Books</a></li>
+              <li><a class="my_books" href="/"> My Books</a></li>
             </ul>
           </nav>
         </header>
@@ -36,8 +39,8 @@
         <input type="text" name="title" placeholder="title" required>
         <input type="text" name="isbn" placeholder="isbn" required>
         <input type="img" name="img_url" placeholder="Image URL" required>
-        <input type="text" name="description" placeholder="description" required>
-        <button type="submit">Search</button>
+        <textarea name="description" id="book-description" placeholder="Description"></textarea>
+        <button type="submit">Submit</button>
       </form>
 
       <section id="results"></section>
@@ -48,6 +51,13 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+    <script src="https://cdnjs.cloudeflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="scripts/models/book.js"></script>
+    <script src="scripts/views/book-view.js"></script>
+    <script src="scripts/views/detail-view.js"></script>
+    <script src="scripts/views/error-view.js"></script>
+    <script src="scripts/views/form-view.js"></script>
+    <script src="scripts/views/list-view.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

@@ -2,8 +2,6 @@
 
 var __API_URL__ = 'https://christian-ahmed-books.herokuapp.com/'; 
 
-pageLoad();
-
 $('#user-form').on('submit', function(e) {
   e.preventDefault();
 
