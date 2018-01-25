@@ -8,12 +8,14 @@ $('#user-form').on('submit', function(e) {
   e.preventDefault();
 
   let data = {
-    title: e.target.title.value,
     author: e.target.author.value,
-    authorUrl: e.target.authorUrl.value
+    title: e.target.title.value,
+    image_url: e.target.img_url.value,
+    isbn: e.target.isbn.value,
+    descr: e.target.description.value
   }
 
-  $.post(`${__API_URL__}/db/person`, data)
+  $.post(`${__API_URL__}/`, data)
     .then(function() {
       pageLoad();
     })
@@ -31,9 +33,9 @@ function pageLoad() {
 
       data.rows.forEach(function(item) {
         let content = `
-        <h2>Book Title: ${item.title}</h2>
         <p>Author: ${item.author}</p>
-        <p>Author Url: ${item.authorUrl}</p>
+        <h2>Book Title: ${item.title}</h2>
+        <p>Image URL: ${item.img_url}</p>
       `;
         $('#results').append(content);
       });
