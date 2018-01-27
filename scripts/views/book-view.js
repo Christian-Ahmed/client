@@ -1,18 +1,14 @@
 'use strict';
-var app = app || {};
+(function(module) {
+  const singleBookView = {};
 
-(function (module) {
-  var bookView = {};
-
-  bookView.initIndexPage = () => {
-    $('.container').hide();
-    $('.book-view').show();
-    app.Book.all.forEach(a => $('#book-list').append(a.toHtml()));
-  };
-
-  $(document).ready(function() {
-    app.Book.fetchAll(bookView.initIndexPage);
-  });
-
-  module.bookView = bookView;
-}), (window);
+  singleBookView.init = function(ctx, next) {
+    $('#errorView').hide();
+    $('#homeView').hide();
+    $('#newBookView').hide();
+    $('#editBookView').hide();
+    $('#singleBookView').show();
+    next();
+  }
+  module.singleBookView = singleBookView;
+})(window);
