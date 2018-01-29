@@ -6,7 +6,8 @@ var app = app || {};
 (function(module){
   const book = {};
 
-  var __API_URL__ = 'https://christian-ahmed-books.herokuapp.com/'; 
+  // var __API_URL__ = 'https://christian-ahmed-books.herokuapp.com/api/v1'; 
+  var __API_URL__ = 'http://localhost:3000/api/v1'; 
 
   function Book(rawBook){
     Object.keys(rawBook).forEach(key => {
@@ -25,7 +26,7 @@ var app = app || {};
   Book.renderAll = (ctx, next) => {
     $('#books').empty();
     app.Book.all.map(book => $('#books').append(book.toHtml()));
-}
+  }
 
   Book.loadAll = rows => {
     rows.sort((a,b) => (new Book(b.title)) - (new Book(a.title)))
@@ -33,7 +34,7 @@ var app = app || {};
   };
 
   Book.fetchAll = (ctx, next) => {
-    $.get(`${__API_URL__ }/v1/books`)
+    $.get(`${__API_URL__ }/books`)
       .then(results => {
         ctx.results = results;
         next();
@@ -80,19 +81,19 @@ var app = app || {};
   Book.prototype.deleteRecord = (ctx, next) => {
     let book_id = ctx.params.book_id;
     $('.bookListing').on('click', $('#deleteButton'), function() {
-        $.ajax({
-            url: `${__API_URL__}/v1/books/${book_id}`,
-            method: 'DELETE',
-            success: function() {
-                window.location = '../';
-            }
-        })
+      $.ajax({
+        url: `${__API_URL__}/v1/books/${book_id}`,
+        method: 'DELETE',
+        success: function() {
+          window.location = '../';
+        }
+      })
     });
-}
+  }
 
-// UPDATE/PUT
-// 3rd - adds this boks values to edit form
-Book.renderEditSingle = (ctx, next) => {
+  // UPDATE/PUT
+  // 3rd - adds this boks values to edit form
+  Book.renderEditSingle = (ctx, next) => {
     $('#author').val(Book.single[0].author);
     $('#description').val(Book.single[0].description);
     $('#image_url').val(Book.single[0].image_url);
