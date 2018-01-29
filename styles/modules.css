@@ -27,14 +27,15 @@
     color: #777;
   }
 
-  my_books {
-    color: white;
-  }
 
   .main-nav ul li:hover a {
     color: #29506D;
   }
   
+  .my_books {
+    color: #ccc;
+  }
+
   #filters {
     padding: 0;
     list-style: none;
